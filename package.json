@@ -1,0 +1,25 @@
+{
+  "name": "type-comparator",
+  "version": "0.0.1",
+  "description": "Useful comparator functions written on Typescript",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "tslint": "tslint src/**/*.ts",
+    "tslint:fix": "tslint --fix src/**/*.ts"
+  },
+  "author": "Uladzimir Aleshka",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.4",
+    "jest": ">=22 <24",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
+  }
+}
