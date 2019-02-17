@@ -1,4 +1,4 @@
-dist/
+build/
 
 # https://github.com/Microsoft/TypeScript/blob/master/.gitignore
 node_modules/

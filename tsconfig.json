@@ -7,17 +7,15 @@
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "outDir": "dist",
+        "outDir": "build",
         "noImplicitAny": false,
-        "rootDir": "src",
         "lib": [
-            "es2015"
+            "es2015",
+            "dom"
         ]
     },
     "exclude": [
         "node_modules",
-        "build",
-        "dist",
-        "test"
+        "build"
     ]
 }

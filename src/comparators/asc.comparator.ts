@@ -1,6 +1,6 @@
-import {Comparator} from "./interfaces";
+import { Comparator } from "../interfaces";
 
-export const SimpleComparator: Comparator<string | number> = (a, b) => {
+export const asc: Comparator = (a, b) => {
     if (a > b) {
         return 1;
     } else if (a < b) {
@@ -8,4 +8,4 @@ export const SimpleComparator: Comparator<string | number> = (a, b) => {
     } else {
         return 0;
     }
-}
+};
