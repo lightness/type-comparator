@@ -2,6 +2,11 @@
     <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="128" alt="Logo" />
 </p>
 
+![](https://img.shields.io/npm/v/type-comparator.svg?style=flat)
+![](https://img.shields.io/npm/l/type-comparator.svg?style=flat)
+![](https://img.shields.io/npm/dm/type-comparator.svg?style=flat)
+![](https://img.shields.io/travis/lightness/type-comparator.svg?style=flat)
+
 # Type Comparator
 
 Useful comparator functions written on Typescript
