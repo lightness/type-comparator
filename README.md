@@ -1,3 +1,7 @@
+<p align="left">
+    <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="128" alt="Logo" />
+</p>
+
 # Type Comparator
 
 Useful comparator functions written on Typescript
