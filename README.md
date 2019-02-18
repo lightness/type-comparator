@@ -60,6 +60,17 @@ array1.sort(asc); // [{a: 1}, {a: 5}]
 array2.sort(asc); // [{a: 5}, {a: 1}]
 ```
 
+### Functional style
+
+#### reverse()
+
+```ts
+const comparator = reverse(asc);
+const array = [17, 4, -17, 42, -3, 0];
+
+array.sort(comparator);
+```
+
 *To Be Continued*
 
 ## Support
