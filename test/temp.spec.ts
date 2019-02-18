@@ -1,6 +1,6 @@
-import { transform, queue, asc, reverse } from '../src';
+import { transform, queue, asc, reverse, cmp } from '../src';
 
-describe(`test`, () => {
+describe(`functional`, () => {
 
     const comparator = transform(
         x => x.b,
@@ -35,4 +35,48 @@ describe(`test`, () => {
         expect(actual).toEqual(expected);
 
     });
+});
+
+describe(`chaining`, () => {
+
+    test(`test 1`, () => {
+        const comparator = cmp().if(x => x % 10 === 0).use(asc);
+
+        expect(comparator(0, 1)).toBe(1);
+        expect(comparator(1, 0)).toBe(-1);
+        expect(comparator(10, 0)).toBe(1);
+        expect(comparator(0, 10)).toBe(-1);
+        expect(comparator(0, 0)).toBe(0);
+    });
+
+    test(`test 2`, () => {
+        const comparator = cmp().if(x => x % 10 === 0).reverse().use(asc);
+
+        expect(comparator(0, 1)).toBe(1);
+        expect(comparator(1, 0)).toBe(-1);
+        expect(comparator(10, 0)).toBe(-1);
+        expect(comparator(0, 10)).toBe(1);
+        expect(comparator(0, 0)).toBe(0);
+    });
+
+    test(`test 3`, () => {
+        const comparator = cmp().reverse().if(x => x % 10 === 0).use(asc);
+
+        expect(comparator(0, 1)).toBe(-1);
+        expect(comparator(1, 0)).toBe(1);
+        expect(comparator(10, 0)).toBe(-1);
+        expect(comparator(0, 10)).toBe(1);
+        expect(comparator(0, 0)).toBe(0);
+    });
+
+    test(`test 3`, () => {
+        const comparator = cmp().reverse().if(x => x % 10 === 0).reverse().use(asc);
+
+        expect(comparator(0, 1)).toBe(-1);
+        expect(comparator(1, 0)).toBe(1);
+        expect(comparator(10, 0)).toBe(1);
+        expect(comparator(0, 10)).toBe(-1);
+        expect(comparator(0, 0)).toBe(0);
+    });
+
 });

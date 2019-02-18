@@ -38,7 +38,6 @@ export interface Chainable {
     reverse(): this;
     transform(transformer: Transformer): this;
     if(condition: Condition): this;
-    introspect(): this;
     use(comparator: Comparator): Comparator;
     useList(comparators: Comparator[]): Comparator;
 }

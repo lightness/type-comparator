@@ -27,12 +27,6 @@ export class Chain implements Chainable {
         return this;
     }
 
-    public introspect() {
-        console.log(this.mutations);
-
-        return this;
-    }
-
     public use(comparator) {
         return Chain.mutate(comparator, this.mutations);
     }
