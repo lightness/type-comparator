@@ -6,12 +6,12 @@ export interface Comparator {
 export type Mutation = (c: Comparator) => Comparator;
 
 export enum MutationType {
-    TRANSFORM = 'transform',
+    MAP = 'map',
     REVERSE = 'reverse',
     IF = 'if'
 }
 
-export type MutationDescriptor = ReverseMutationDescriptor | TransformMutationDescriptor | IfMutationDescriptor;
+export type MutationDescriptor = ReverseMutationDescriptor | MapMutationDescriptor | IfMutationDescriptor;
 
 export interface MutationDescriptorBase {
     type: MutationType;
@@ -21,23 +21,22 @@ export interface ReverseMutationDescriptor extends MutationDescriptorBase {
     type: MutationType.REVERSE;
 }
 
-export interface TransformMutationDescriptor extends MutationDescriptorBase {
-    type: MutationType.TRANSFORM;
-    transformer: (x: any) => any;
+export interface MapMutationDescriptor extends MutationDescriptorBase {
+    type: MutationType.MAP;
+    mapper: Mapper;
 }
 
 export interface IfMutationDescriptor extends MutationDescriptorBase {
     type: MutationType.IF;
-    condition: (x: any) => boolean;
+    condition: Condition;
 }
 
-export type Transformer = (item: any) => any;
+export type Mapper = (item: any) => any;
 export type Condition = (item: any) => boolean;
 
 export interface Chainable {
     reverse(): this;
-    transform(transformer: Transformer): this;
+    map(mapper: Mapper): this;
     if(condition: Condition): this;
-    use(comparator: Comparator): Comparator;
-    useList(comparators: Comparator[]): Comparator;
+    use(comparatorOrComparators: Comparator | Comparator[]): Comparator;
 }
