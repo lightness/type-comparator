@@ -1,5 +1,5 @@
 <a href="https://github.com/lightness/type-comparator">
-    <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="128" alt="Logo" align="right" />
+    <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="82" alt="Logo" align="right" />
 </p>
 
 ![](https://img.shields.io/npm/v/type-comparator.svg?style=flat)
