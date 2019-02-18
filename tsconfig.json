@@ -14,8 +14,11 @@
             "dom"
         ]
     },
+    "include": [
+        "src/**/*"
+    ],
     "exclude": [
         "node_modules",
-        "build"
+        "test"
     ]
 }
