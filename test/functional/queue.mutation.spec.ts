@@ -1,14 +1,14 @@
-import { queue, asc } from "../../src";
+import {queue, asc} from "../../src";
 
 describe(`mutation:queue`, () => {
-    
+
     const originalComparator1 = (a, b) => asc(a % 2, b % 2);
     const originalComparator2 = (a, b) => asc(a, b);
 
     test(`should apply only first comparator, if it returns non-zero value`, () => {
         const originalComparator1Mock = jest.fn(originalComparator1);
         const originalComparator2Mock = jest.fn(originalComparator2);
-        
+
         const comparartor = queue([
             originalComparator1Mock,
             originalComparator2Mock
@@ -28,7 +28,7 @@ describe(`mutation:queue`, () => {
     test(`should apply second comparator, if first one returns zero`, () => {
         const originalComparator1Mock = jest.fn(originalComparator1);
         const originalComparator2Mock = jest.fn(originalComparator2);
-        
+
         const comparartor = queue([
             originalComparator1Mock,
             originalComparator2Mock
@@ -45,6 +45,16 @@ describe(`mutation:queue`, () => {
         expect(originalComparator2Mock).toBeCalledTimes(1);
         expect(originalComparator2Mock).toBeCalledWith(...args);
         expect(originalComparator2Mock).toReturnWith(result);
+    });
+
+    test(`should return items in original order, if [] passed`, () => {
+        const array = [1, -2, 6, 0];
+        const comparartor = queue([]);
+
+        const actual = array.slice().sort(comparartor);
+        const expected = [1, -2, 6, 0];
+
+        expect(actual).toEqual(expected);
     });
 
 });
