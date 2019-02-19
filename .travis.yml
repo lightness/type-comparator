@@ -6,3 +6,7 @@ scripts:
   - npm install codecov -g
 after_success:
   - codecov
+
+cache:
+  directories:
+    - node_modules

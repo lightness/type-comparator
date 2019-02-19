@@ -6,6 +6,7 @@
 ![](https://img.shields.io/npm/l/type-comparator.svg?style=flat)
 ![](https://img.shields.io/npm/dm/type-comparator.svg?style=flat)
 ![](https://img.shields.io/travis/lightness/type-comparator.svg?style=flat)
+![Codecov](https://img.shields.io/codecov/c/github/lightness/type-comparator.svg?style=flat)
 
 # Type Comparator
 
