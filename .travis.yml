@@ -5,6 +5,7 @@ node_js:
 scripts:
   - npm install codecov -g
 after_success:
+  - jest --coverage
   - codecov
 
 cache:
