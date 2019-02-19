@@ -16,6 +16,11 @@ Useful comparator functions written on Typescript
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [asc / desc](#ascdesc)
+    - [reverse](#reverse)
+    - [map](#map)
+    - [if / condition](#if)
+    - [queue / use](#queue)
   - [Support](#support)
   - [Contributing](#contributing)
 
@@ -27,7 +32,8 @@ npm i type-comparator
 
 ## Usage
 
-### Base comparators: `asc` and `desc`
+<a name="ascdesc"></a>
+### Base comparators: `asc` and `desc` 
 
 `asc` is simple comparator contains just base comparison logic. 
 
@@ -69,6 +75,7 @@ array1.sort(asc); // [{a: 1}, {a: 5}]
 array2.sort(asc); // [{a: 5}, {a: 1}]
 ```
 
+<a name="reverse"></a>
 ### Function `reverse(comparator)` and `.reverse()` chain
 ```ts
 import { asc, cmp, reverse } from 'type-comparator';
@@ -82,6 +89,7 @@ array.slice().sort(functionalCmp);
 array.slice().sort(chainingCmp);
 ```
 
+<a name="map"></a>
 ### Function `map(mapper, comparator)` and `.map(mapper)` chain
 ```ts
 import { asc, cmp, map } from 'type-comparator';
@@ -96,6 +104,7 @@ array.slice().sort(functionalCmp);
 array.slice().sort(chainingCmp);
 ```
 
+<a name="if"></a>
 ### Function `condition(conditionFn, comparator)` and `.if(conditionFn)` chain
 ```ts
 import { asc, cmp, condition } from 'type-comparator';
@@ -110,6 +119,7 @@ array.slice().sort(functionalCmp);
 array.slice().sort(chainingCmp);
 ```
 
+<a name="queue"></a>
 ### Function `queue(comparators)` and `.use(comparators)` chain
 ```ts
 import { asc, cmp, desc, map, queue } from 'type-comparator';
