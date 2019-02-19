@@ -6,6 +6,7 @@
   "typings": "build/index.d.ts",
   "scripts": {
     "test": "jest",
+    "test:coverage": "",
     "build": "tsc",
     "clean": "rimraf build",
     "tslint": "tslint src/**/*.ts",
@@ -38,5 +39,8 @@
     "type",
     "types",
     "typescript"
-  ]
+  ],
+  "dependencies": {
+    "codecov": "^3.2.0"
+  }
 }
