@@ -20,7 +20,8 @@ Useful comparator functions written on Typescript
     - [asc / desc](#ascdesc)
     - [reverse](#reverse)
     - [map](#map)
-    - [if / condition](#if)
+    - [if (functional way)](#if)
+    - [if (chaining way)](#chainif)
     - [queue / use](#queue)
   - [Support](#support)
   - [Contributing](#contributing)
@@ -43,7 +44,9 @@ It works well with numbers...
 ```ts
 const array = [17, 4, -17, 42, -3, 0];
 
-array.sort(asc); // [-17, -3, 0, 4, 17, 42]
+// [-17, -3, 0, 4, 17, 42]
+array.sort(asc); 
+array.sort(cmp().asc());
 ```
 
 And with strings...
@@ -51,7 +54,9 @@ And with strings...
 ```ts
 const array = ['aaa', 'bax', 'a', 'x', 'ax', 'ab', 'ba', 'bx'];
 
-array.sort(asc); // ["a", "aaa", "ab", "ax", "ba", "bax", "bx", "x"]
+// ["a", "aaa", "ab", "ax", "ba", "bax", "bx", "x"]
+array.sort(asc); 
+array.sort(cmp().asc())
 ```
 
 Even with dates...
@@ -59,7 +64,9 @@ Even with dates...
 ```ts
 const array = [new Date(2018, 0, 1), new Date(2017, 0, 1), new Date(2019, 0, 1)];
 
-array.sort(asc); // [Date(2017, 0, 1), Date(2018, 0, 1), Date(2019, 0, 1)]
+// [Date(2017, 0, 1), Date(2018, 0, 1), Date(2019, 0, 1)]
+array.sort(asc); 
+array.sort(cmp().asc()); 
 ```
 
 Actually it works well with everything comparable by `>` and `<`. 
@@ -106,17 +113,32 @@ array.slice().sort(chainingCmp);
 ```
 
 <a name="if"></a>
-### Function `condition(conditionFn, comparator)` and `.if(conditionFn)` chain
+### Function `condition(conditionFn, comparatorA, comparatorB)` 
 ```ts
 import { asc, cmp, condition } from 'type-comparator';
 
 const conditionFn = x => x % 2 === 0;
-const functionalCmp = condition(conditionFn, asc);
-const chainingCmp = cmp().if(conditionFn).use(asc);
+const functionalCmp = condition(conditionFn, asc, desc);
 const array = [17, 4, -17, 42, -3, 0];
 
-// [ -17, -3, 17, 0, 4, 42 ]
+// [ 17, -3, -17, 0, 4, 42 ]
 array.slice().sort(functionalCmp);
+```
+
+<a name="chainif"></a>
+### Chain `.if(conditionFn)` 
+```ts
+import { asc, cmp, condition } from 'type-comparator';
+
+const conditionFn = x => x % 4 === 0;
+const conditionFn2 = x => x % 2 === 0;
+const chainingCmp = cmp()
+    .if(conditionFn).then(asc)
+    .elif(conditionFn2).then(asc)
+    .else(asc);
+const array = [17, 4, -17, 42, -3, 0];
+
+// [ -17, -3, 17, 42, 0, 4 ]
 array.slice().sort(chainingCmp);
 ```
 

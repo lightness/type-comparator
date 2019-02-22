@@ -1,12 +1,13 @@
 {
   "name": "type-comparator",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "description": "Useful comparator functions written on Typescript",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
   "scripts": {
+    "start": "node ./build/main.js",
     "test": "jest",
-    "test:coverage": "",
+    "test:coverage": "jest --coverage",
     "build": "tsc",
     "clean": "rimraf build",
     "tslint": "tslint src/**/*.ts",

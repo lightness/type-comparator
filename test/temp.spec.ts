@@ -43,47 +43,18 @@ describe(`chaining`, () => {
     const array = [1, 10, 2, 20];
 
     test(`test 1`, () => {
-        const comparator = cmp().if(condition).use(asc);
+        const comparator = cmp().if(condition).then(asc).else(asc);
 
         expect(comparator(10, 1)).toBe(1);
         expect(comparator(1, 10)).toBe(-1);
         expect(comparator(20, 10)).toBe(1);
         expect(comparator(10, 20)).toBe(-1);
         expect(comparator(10, 10)).toBe(0);
-        expect(array.slice(0).sort(comparator)).toEqual([1, 2, 10, 20]);
-    });
 
-    test(`test 2`, () => {
-        const comparator = cmp().if(condition).reverse().use(asc);
+        const actual = array.slice(0).sort(comparator);
+        const expected = [1, 2, 10, 20];
 
-        expect(comparator(10, 1)).toBe(1);
-        expect(comparator(1, 10)).toBe(-1);
-        expect(comparator(20, 10)).toBe(-1);
-        expect(comparator(10, 20)).toBe(1);
-        expect(comparator(10, 10)).toBe(0);
-        expect(array.slice(0).sort(comparator)).toEqual([2, 1, 20, 10]);
-    });
-
-    test(`test 3`, () => {
-        const comparator = cmp().reverse().if(condition).use(asc);
-
-        expect(comparator(10, 1)).toBe(-1);
-        expect(comparator(1, 10)).toBe(1);
-        expect(comparator(20, 10)).toBe(-1);
-        expect(comparator(10, 20)).toBe(1);
-        expect(comparator(10, 10)).toBe(0);
-        expect(array.slice(0).sort(comparator)).toEqual([20, 10, 2, 1]);
-    });
-
-    test(`test 3`, () => {
-        const comparator = cmp().reverse().if(condition).reverse().use(asc);
-
-        expect(comparator(10, 1)).toBe(-1);
-        expect(comparator(1, 10)).toBe(1);
-        expect(comparator(20, 10)).toBe(1);
-        expect(comparator(10, 20)).toBe(-1);
-        expect(comparator(10, 10)).toBe(0);
-        expect(array.slice(0).sort(comparator)).toEqual([10, 20, 1, 2]);
+        expect(actual).toEqual(expected);
     });
 
 });
@@ -94,7 +65,11 @@ describe(`chaining with objects`, () => {
         .map(x => x.a)
         .use([
             cmp().map(x => x.b).use(desc),
-            cmp().if(x => (x.b + x.c) % 2 === 0).map(x => x.c).use(asc)
+            cmp().if(x => (x.b + x.c) % 2 === 0).then(
+                cmp().map(x => x.c).use(asc)
+            ).else(
+                cmp().map(x => x.c).use(asc)
+            )
         ]);
 
     test(`dataset 1`, () => {
