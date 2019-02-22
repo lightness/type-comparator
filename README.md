@@ -1,10 +1,20 @@
 <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="100" alt="Logo" align="right" />
 
-![](https://img.shields.io/npm/v/type-comparator.svg?style=flat)
-![](https://img.shields.io/npm/l/type-comparator.svg?style=flat)
-![](https://img.shields.io/npm/dm/type-comparator.svg?style=flat)
-![](https://img.shields.io/travis/lightness/type-comparator.svg?style=flat)
-![Codecov](https://img.shields.io/codecov/c/github/lightness/type-comparator.svg?style=flat)
+<a href="https://www.npmjs.com/package/type-comparator">
+    <img src="https://img.shields.io/npm/v/type-comparator.svg?style=flat" alt="NPM Version" />
+</a>
+<a href="https://www.npmjs.com/package/type-comparator">
+    <img src="https://img.shields.io/npm/l/type-comparator.svg?style=flat" alt="Package License" />
+</a>
+<a href="https://www.npmjs.com/package/type-comparator">
+    <img src="https://img.shields.io/npm/dm/type-comparator.svg?style=flat" alt="NPM Downloads" />
+</a>
+<a href="https://travis-ci.org/lightness/type-comparator">
+    <img src="https://img.shields.io/travis/lightness/type-comparator.svg?style=flat" alt="Travis" />
+</a>
+<a href="https://codecov.io/gh/lightness/type-comparator">
+    <img src="https://img.shields.io/codecov/c/github/lightness/type-comparator.svg?style=flat" alt="Travis" />
+</a>
 
 # Type Comparator
 
