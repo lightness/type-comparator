@@ -1,6 +1,4 @@
-<a href="https://github.com/lightness/type-comparator">
-    <img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="100" alt="Logo" align="right" />
-</p>
+<img src="https://pp.userapi.com/c852036/v852036486/bbce5/DCotw_jzAKo.jpg" width="100" alt="Logo" align="right" />
 
 ![](https://img.shields.io/npm/v/type-comparator.svg?style=flat)
 ![](https://img.shields.io/npm/l/type-comparator.svg?style=flat)
