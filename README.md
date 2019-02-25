@@ -31,6 +31,7 @@ Useful comparator functions written on Typescript
     - [if (functional way)](#if)
     - [if (chaining way)](#chainif)
     - [queue / use](#queue)
+  - [Q&A](#qa)
   - [Support](#support)
   - [Contributing](#contributing)
 
@@ -213,6 +214,28 @@ const array = [
 // ]
 array.slice().sort(comparator);
 ```
+
+****
+<a name="qa"></a>
+### Q&A
+
+**Q:** Should `reverse(cmp)` be equals to reversed array with `cmp` ?
+
+**A:** In general, it should not. 
+`Array.prototype.reverse` just reverse all elements order, regardless its values.
+When comparator suppose both values are equal, it returns `0`. And these elements save original order.
+
+```ts
+const array = [1,2,4];
+const comparator = cmp().map(x => x%2 === 0).use(asc);
+
+// [2, 4, 1]
+array.slice().sort(reverse(comparator));
+
+// [4, 2, 1]
+array.slice().sort(comparator).reverse();
+```
+
 ****
 ## Support
 
