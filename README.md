@@ -23,16 +23,27 @@ Useful comparator functions written on Typescript
 
 ## Table of Contents
 
+- [Type Comparator](#type-comparator)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [asc / desc](#ascdesc)
-    - [reverse](#reverse)
-    - [map](#map)
-    - [if (functional way)](#if)
-    - [if (chaining way)](#chainif)
-    - [queue / use](#queue)
-  - [Q&A](#qa)
+    - [Base comparators: `asc` and `desc`](#base-comparators-asc-and-desc)
+    - [Functional way](#functional-way)
+      - [Function `reverse(comparator)`](#function-reversecomparator)
+      - [Function `map(mapper, comparator)`](#function-mapmapper-comparator)
+      - [Function `condition(conditionFn, comparatorA, comparatorB)`](#function-conditionconditionfn-comparatora-comparatorb)
+      - [Function `queue(comparators)`](#function-queuecomparators)
+    - [Chaining way](#chaining-way)
+      - [Basic usage](#basic-usage)
+      - [Chain `.reverse()`](#chain-reverse)
+      - [Chain `.map(mapper)`](#chain-mapmapper)
+      - [Chain `.if(conditionFn)`](#chain-ifconditionfn)
+      - [Chain `.then(comparator)`](#chain-thencomparator)
+      - [Chain `.elif(conditionFn)`](#chain-elifconditionfn)
+      - [Chain `.else(comparator)`](#chain-elsecomparator)
+      - [Chain `.use(comparators)`](#chain-usecomparators)
+    - [Something more complex?... Ok!](#something-more-complex-ok)
+    - [Q&A](#qa)
   - [Support](#support)
   - [Contributing](#contributing)
 
@@ -44,7 +55,6 @@ npm i type-comparator
 
 ## Usage
 
-<a name="ascdesc"></a>
 ### Base comparators: `asc` and `desc` 
 
 `asc` is simple comparator contains just base comparison logic. 
@@ -324,7 +334,6 @@ array.slice().sort(comparator);
 ```
 
 ****
-<a name="qa"></a>
 ### Q&A
 
 **Q:** Should `reverse(cmp)` be equals to reversed array with `cmp` ?
