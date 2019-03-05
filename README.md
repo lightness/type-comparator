@@ -21,6 +21,8 @@
 
 Useful comparator functions written on Typescript
 
+<img src="https://pp.userapi.com/c847124/v847124060/1bc6cf/t_jixj5HLK4.jpg" width="700" alt="Image" align="center" />
+
 ## Table of Contents
 
 - [Type Comparator](#type-comparator)
