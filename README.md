@@ -21,7 +21,7 @@
 
 Useful comparator functions written on Typescript
 
-<img src="https://pp.userapi.com/c847124/v847124060/1bc6cf/t_jixj5HLK4.jpg" width="700" alt="Image" align="center" />
+<img src="https://pp.userapi.com/c847124/v847124060/1bc6cf/t_jixj5HLK4.jpg" width="730" alt="Image" align="center" />
 
 ## Table of Contents
 
@@ -362,4 +362,4 @@ Please [open an issue](https://github.com/lightness/type-comparator/issues/new) 
 
 ## Contributing
 
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/lightness/type-comparator/compare/).
