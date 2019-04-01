@@ -1,62 +1,73 @@
-import { condition } from "../../src";
+import {condition} from "../../src";
 
 describe(`mutation:condition`, () => {
+    const A = 42;
+    const B = 101;
 
-    const originalComparator = (a, b) => a - b;
-    const conditionFn = (x) => x % 2 === 0;
-        
+    beforeEach(() => {
+        this.conditionFn = jest.fn();
+        this.cmpA = jest.fn(() => A);
+        this.cmpB = jest.fn(() => B);
+    });
+
     test(`should return positive value, if first arg satisfies condition and second arg not`, () => {
-        const resultComparator = condition(conditionFn, originalComparator);
+        this.conditionFn
+            .mockReturnValueOnce(true)
+            .mockReturnValueOnce(false);
 
-        const args: [number, number] = [-2, 1];
+        const comparator = condition(this.conditionFn, this.cmpA, this.cmpB);
 
-        expect(conditionFn(args[0])).toBe(true);
-        expect(conditionFn(args[1])).toBe(false);
+        const args: [number, number] = [null, null];
 
-        expect(resultComparator(...args)).toBeGreaterThan(0);
+        expect(comparator(...args)).toBeGreaterThan(0);
+        expect(this.conditionFn).toBeCalledTimes(2);
+        expect(this.cmpA).not.toBeCalled();
+        expect(this.cmpB).not.toBeCalled();
     });
 
     test(`should return negative value, if second arg satisfies condition and first arg not`, () => {
-        const resultComparator = condition(conditionFn, originalComparator);
+        this.conditionFn
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(true);
 
-        const args: [number, number] = [1, 0];
+        const comparator = condition(this.conditionFn, this.cmpA, this.cmpB);
 
-        expect(conditionFn(args[0])).toBe(false);
-        expect(conditionFn(args[1])).toBe(true);
+        const args: [number, number] = [null, null];
 
-        expect(resultComparator(...args)).toBeLessThan(0);
+        expect(comparator(...args)).toBeLessThan(0);
+        expect(this.conditionFn).toBeCalledTimes(2);
+        expect(this.cmpA).not.toBeCalled();
+        expect(this.cmpB).not.toBeCalled();
     });
 
-    test(`should apply original comparator, if both args satisfy condition`, () => {
-        const originalComparatorMock = jest.fn(originalComparator);
-        const resultComparator = condition(conditionFn, originalComparatorMock);
+    test(`should apply first comparator, if both args satisfy condition`, () => {
+        this.conditionFn
+            .mockReturnValueOnce(true)
+            .mockReturnValueOnce(true);
 
-        const args: [number, number] = [-2, 2];
+        const comparator = condition(this.conditionFn, this.cmpA, this.cmpB);
 
-        expect(conditionFn(args[0])).toBe(true);
-        expect(conditionFn(args[1])).toBe(true);
+        const args: [number, number] = [null, null];
 
-        const result = resultComparator(...args);
-
-        expect(originalComparatorMock).toBeCalledTimes(1);
-        expect(originalComparatorMock).toBeCalledWith(...args);
-        expect(originalComparatorMock).toReturnWith(result);
+        expect(comparator(...args)).toBe(A);
+        expect(this.conditionFn).toBeCalledTimes(2);
+        expect(this.cmpA).toBeCalledTimes(1);
+        expect(this.cmpB).not.toBeCalled();
     });
 
-    test(`should apply original comparator, if both args doesn't satisfy condition`, () => {
-        const originalComparatorMock = jest.fn(originalComparator);
-        const resultComparator = condition(conditionFn, originalComparatorMock);
+    test(`should apply first comparator, if both args don't satisfy condition`, () => {
+        this.conditionFn
+            .mockReturnValueOnce(false)
+            .mockReturnValueOnce(false);
 
-        const args: [number, number] = [1, -23];
+        const comparator = condition(this.conditionFn, this.cmpA, this.cmpB);
 
-        expect(conditionFn(args[0])).toBe(false);
-        expect(conditionFn(args[1])).toBe(false);
+        const args: [number, number] = [null, null];
 
-        const result = resultComparator(...args);
-
-        expect(originalComparatorMock).toBeCalledTimes(1);
-        expect(originalComparatorMock).toBeCalledWith(...args);
-        expect(originalComparatorMock).toReturnWith(result);
+        expect(comparator(...args)).toBe(B);
+        expect(this.conditionFn).toBeCalledTimes(2);
+        expect(this.cmpA).not.toBeCalled();
+        expect(this.cmpB).toBeCalledTimes(1);
     });
 
 });

@@ -1,15 +1,22 @@
-import { asc } from "../comparators/asc.comparator";
-import { Comparator } from "../interfaces";
+import {Comparator} from "../interfaces";
 
-export function condition(c: (item: any) => boolean, f: Comparator): Comparator {
+export function condition(cond: (item: any) => boolean, thenCmp: Comparator, elseCmp: Comparator): Comparator {
     return (a, b) => {
-        const condA = c(a);
-        const condB = c(b);
+        const condA = cond(a);
+        const condB = cond(b);
 
-        if (condA === condB) {
-            return f(a, b);
+        if (condA) {
+            if (condB) {
+                return thenCmp(a, b);
+            } else {
+                return 1;
+            }
         } else {
-            return asc(condA, condB);
+            if (condB) {
+                return -1;
+            } else {
+                return elseCmp(a, b);
+            }
         }
     };
 }

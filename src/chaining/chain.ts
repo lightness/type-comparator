@@ -1,5 +1,7 @@
 import {Chainable, MutationDescriptor, Mapper, MutationType, Comparator, Condition} from "../interfaces";
 import {condition, reverse, map} from "../mutations";
+import {ThenChain} from "./then-chain";
+import {asc, desc} from "../comparators";
 
 export class Chain implements Chainable {
 
@@ -24,7 +26,7 @@ export class Chain implements Chainable {
     public if(condition: Condition) {
         this.mutations.push({type: MutationType.IF, condition});
 
-        return this;
+        return new ThenChain(this);
     }
 
     public use(comparatorOrComparators: Comparator | Comparator[]) {
@@ -45,7 +47,15 @@ export class Chain implements Chainable {
         return Chain.mutate(comparatorOrComparators, this.mutations);
     }
 
-    private static mutate(fn: Comparator, descriptors: MutationDescriptor[]) {
+    public asc() {
+        return this.use(asc);
+    }
+
+    public desc() {
+        return this.use(desc);
+    }
+
+    private static mutate(fn: Comparator, descriptors: MutationDescriptor[]): Comparator {
         let currentFn = fn;
 
         for (const descriptor of descriptors.slice().reverse()) {
@@ -56,7 +66,7 @@ export class Chain implements Chainable {
                     case MutationType.MAP:
                         return map(descriptor.mapper, prevFn);
                     case MutationType.IF:
-                        return condition(descriptor.condition, prevFn);
+                        return condition(descriptor.condition, descriptor.comparator, prevFn);
                 }
             })(currentFn);
         }
