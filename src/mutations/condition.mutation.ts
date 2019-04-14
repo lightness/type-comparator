@@ -2,7 +2,6 @@ import {Comparator} from "../interfaces";
 
 export function condition(cond: (item: any) => boolean, thenCmp: Comparator, elseCmp: Comparator): Comparator {
     return (a, b) => {
-        // VERBOSE && console.log(`COND: (${JSON.stringify(a)}, ${JSON.stringify(b)})`);
         const condA = cond(a);
         const condB = cond(b);
 
