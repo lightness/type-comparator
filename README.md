@@ -19,7 +19,7 @@
 
 # Type Comparator
 
-Useful comparator functions written on Typescript
+Useful comparator functions written on Typescript (But you can use it on your JS project)
 
 <img src="https://pp.userapi.com/c847124/v847124060/1bc6cf/t_jixj5HLK4.jpg" width="730" alt="Image" align="center" />
 
