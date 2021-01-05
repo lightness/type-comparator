@@ -1,0 +1,67 @@
+name: Release
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  checkout:
+    name: Checkout
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+  node:
+    name: node
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+
+  test:
+    name: Test Release
+    runs-on: ubuntu-18.04
+    needs: [checkout, node]
+    steps:
+      - run: npm test
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-18.04
+    needs: [test]
+    steps:
+      - uses: actions/create-release@v1
+        name: Create Release
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: To be defined
+          draft: false
+          prerelease: false
+
+  publish:
+    name: Publish Release
+    runs-on: ubuntu-18.04
+    needs: [release]
+    steps:
+      - uses: actions/setup-node@v2
+        name: Set NPM as registry
+        with:
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish
+        name: Publish to NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: actions/setup-node@v2
+        name: Set Github packages as registry
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm publish
+        name: Publish to Github packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

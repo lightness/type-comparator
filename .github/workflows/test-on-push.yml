@@ -1,0 +1,25 @@
+name: Test on push
+on: push
+jobs:
+  checkout:
+    name: Checkout
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+  node:
+    name: node
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+
+  test:
+    name: Test Release
+    runs-on: ubuntu-18.04
+    needs: [checkout, node]
+    steps:
+      - run: npm test
