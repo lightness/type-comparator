@@ -4,27 +4,22 @@ on:
     tags:
       - 'v*'
 jobs:
-  checkout:
-    name: Checkout
-    runs-on: ubuntu-18.04
+  test:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        node: [ '8', '10', '12', '14' ]
     steps:
       - uses: actions/checkout@v2
-
-  node:
-    name: node
-    runs-on: ubuntu-18.04
-    steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: '10.x'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: ${{ matrix.node }}
       - run: npm install
-
-  test:
-    name: Test Release
-    runs-on: ubuntu-18.04
-    needs: [checkout, node]
-    steps:
       - run: npm test
 
   release:
@@ -49,10 +44,12 @@ jobs:
     runs-on: ubuntu-18.04
     needs: [release]
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        name: Set NPM as registry
         with:
+          node-version: '14'
           registry-url: 'https://registry.npmjs.org'
+      - run: npm install
       - run: npm publish
         name: Publish to NPM
         env:
