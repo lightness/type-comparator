@@ -4,12 +4,14 @@ jobs:
   test:
     name: Test commit(s)
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node:  [ '8', 10', '12', '14' ]
     steps:
       - uses: actions/checkout@v2
-      - run: pwd
       - uses: actions/setup-node@v2
         with:
-          node-version: '10.x'
+          node-version: ${{ matrix.node }}
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - run: npm test
