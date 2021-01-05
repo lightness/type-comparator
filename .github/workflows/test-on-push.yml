@@ -1,17 +1,11 @@
 name: Test on push
 on: push
 jobs:
-  checkout:
-    name: Checkout
+  test:
+    name: Test commit(s)
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-
-  test:
-    name: Test Release
-    runs-on: ubuntu-18.04
-    needs: [checkout]
-    steps:
       - uses: actions/setup-node@v2
         with:
           node-version: '10.x'
