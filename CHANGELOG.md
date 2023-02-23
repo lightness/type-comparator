@@ -1,5 +1,12 @@
 
 
+### [0.2.10-2](https://github.com/lightness/type-comparator/compare/v0.2.10-1...v0.2.10-2) (2023-02-23)
+
+
+### Bug Fixes
+
+* **infra:** rebuild before release ([c7cdc8b](https://github.com/lightness/type-comparator/commit/c7cdc8b864116faaa0def3b353a5d0950fc89bcd))
+
 ### [0.2.10-1](https://github.com/lightness/type-comparator/compare/v0.2.10-0...v0.2.10-1) (2023-02-23)
 
 
