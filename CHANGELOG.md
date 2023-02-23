@@ -1,5 +1,12 @@
 
 
+### [0.2.10-3](https://github.com/lightness/type-comparator/compare/v0.2.10-2...v0.2.10-3) (2023-02-23)
+
+
+### Bug Fixes
+
+* **infra:** exlude release-it config from npm bundle ([664bcab](https://github.com/lightness/type-comparator/commit/664bcab573546f5ca1c427854d4f6da47209b0d6))
+
 ### [0.2.10-2](https://github.com/lightness/type-comparator/compare/v0.2.10-1...v0.2.10-2) (2023-02-23)
 
 
