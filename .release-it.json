@@ -2,9 +2,6 @@
   "git": {
     "commitMessage": "docs(release): v${version}"
   },
-  "npm": {
-    "publish": false
-  },
   "plugins": {
     "@release-it/conventional-changelog": {
       "infile": "CHANGELOG.md",
