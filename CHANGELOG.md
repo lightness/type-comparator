@@ -1,5 +1,12 @@
 
 
+### [0.2.10-1](https://github.com/lightness/type-comparator/compare/v0.2.10-0...v0.2.10-1) (2023-02-23)
+
+
+### Bug Fixes
+
+* **infra:** enable push to npm during release ([7e05cc6](https://github.com/lightness/type-comparator/commit/7e05cc60883552513f370bd504cde0af77128a2b))
+
 ### [0.2.10-0](https://github.com/lightness/type-comparator/compare/v0.2.9...v0.2.10-0) (2023-02-23)
 
 
