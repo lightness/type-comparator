@@ -1,3 +1,17 @@
+
+
+### [0.2.10-0](https://github.com/lightness/type-comparator/compare/v0.2.9...v0.2.10-0) (2023-02-23)
+
+
+### Features
+
+* **infra:** introduce release-it ([808760a](https://github.com/lightness/type-comparator/commit/808760ad39128a23cc6ef91f7fe3410117809d00))
+
+
+### Bug Fixes
+
+* exclude non necessary files from npm bundle ([6efe8b2](https://github.com/lightness/type-comparator/commit/6efe8b2b0806f655ea5ead0de58efb1f0c2256d0))
+
 ### Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
