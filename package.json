@@ -10,10 +10,9 @@
     "test:coverage": "jest --coverage",
     "build": "tsc",
     "clean": "rimraf build",
-    "prepublish": "npm run clean && npm run build",
     "tslint": "tslint src/**/*.ts",
     "tslint:fix": "tslint --fix src/**/*.ts",
-    "release": "release-it"
+    "release": "npm run clean && npm run build && release-it"
   },
   "author": {
     "name": "Uladzimir Aleshka",
