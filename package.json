@@ -12,7 +12,8 @@
     "clean": "rimraf build",
     "prepublish": "npm run clean && npm run build",
     "tslint": "tslint src/**/*.ts",
-    "tslint:fix": "tslint --fix src/**/*.ts"
+    "tslint:fix": "tslint --fix src/**/*.ts",
+    "release": "release-it"
   },
   "author": {
     "name": "Uladzimir Aleshka",
@@ -20,8 +21,10 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@release-it/conventional-changelog": "^5.1.1",
     "@types/jest": "^24.0.4",
     "jest": ">=22 <24",
+    "release-it": "^15.6.0",
     "rimraf": "^2.6.3",
     "ts-jest": "^23.10.5",
     "ts-node": "^8.0.2",
