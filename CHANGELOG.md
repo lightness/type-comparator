@@ -1,5 +1,7 @@
 
 
+### [0.2.10](https://github.com/lightness/type-comparator/compare/v0.2.10-3...v0.2.10) (2023-02-23)
+
 ### [0.2.10-3](https://github.com/lightness/type-comparator/compare/v0.2.10-2...v0.2.10-3) (2023-02-23)
 
 
